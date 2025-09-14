@@ -4,6 +4,7 @@ Feature: passing multiple parameters to the same step
   Scenario: Searching multiple items
     Given user is on Google search page
     Then user searches the following items
+      | items        |
       | loop academy |
       | java         |
       | selenium     |
@@ -15,3 +16,5 @@ Feature: passing multiple parameters to the same step
       | Polina       |
 
     And we love Loop Academy
+
+
