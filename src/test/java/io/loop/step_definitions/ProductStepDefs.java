@@ -26,7 +26,7 @@ public class ProductStepDefs {
     }
 
     @Then("User should be able to see expected prices in the following products")
-    public void user_should_be_able_to_see_expected_prices_in_the_following_products(List<Map<String, String>> productDetails) {
+    public void user_should_be_able_to_see_expected_prices_in_the_following_products(List<Map<String, String>> productDetails) throws InterruptedException {
         for (Map<String, String> productDetail : productDetails) {
 //            System.out.println("============Product Details===============");
 //            System.out.println("productDetail.get(\"Category\") = " + productDetail.get("Category"));
@@ -47,6 +47,31 @@ public class ProductStepDefs {
             assertEquals("Expected does not match the actual", expectedPrice, actualPrice);
             LOG.info("Validation of the price for: " + productDetail.get("Category") + ", for Product: " + productDetail.get("Product") + " expected: " + expectedPrice + " - actual: " + actualPrice);
         }
+    }
+
+    @Then("User should be able to see expected prices in the following products with listOfLists")
+    public void user_should_be_able_to_see_expected_prices_in_the_following_products_with_list_of_lists(List<List<String>> productDetails) throws InterruptedException {
+           for (List<String> productDetail : productDetails) {
+               //category
+               pages.getProductPage().clickCategory(productDetail.get(0));
+
+               //get actual prize for each product
+               String actualPrice = pages.getProductPage().getProductPrice(productDetail.get(1));
+
+               //get expected price from feature file
+               String expectedPrice = productDetail.get(2);
+
+               //assertion
+               assertEquals("expected does not match actual", expectedPrice, actualPrice);
+               LOG.info("Validation of the price for: " + productDetail.get(0) + ", for product" + productDetail.get(1) + " expected: " + expectedPrice + " - actual: " + actualPrice);
+
+           }
+    }
+
+    @Then("user should be able to see the names")
+    public void user_should_be_able_to_see_the_names(Map<String, List<String>> student) throws InterruptedException {
+       List<String> group2 = student.get("Group 2");
+        System.out.println("group2 = " + group2);
     }
 
 }

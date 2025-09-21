@@ -1,6 +1,6 @@
 Feature: WebOrders login and link validation
 
-  @HomeWork
+  @HomeWork @smoke
   Scenario: User logs ing and prints links
     Given user is on WebOrders Login Page
     When user logs in with username "Tester" and password "test"
