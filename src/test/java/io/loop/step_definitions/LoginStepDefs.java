@@ -10,6 +10,8 @@ import io.loop.utilities.ConfigurationReader;
 import io.loop.utilities.DocuportConstants;
 import io.loop.utilities.Driver;
 
+import java.util.Map;
+
 import static org.junit.Assert.assertTrue;
 
 public class LoginStepDefs {
@@ -79,5 +81,19 @@ public class LoginStepDefs {
     @Then("user should be able to see the home page for supervisor")
     public void user_should_be_able_to_see_the_home_page_for_supervisor() {
         assertTrue("Home Page is not loaded", homePage.logo.isDisplayed());
+    }
+
+    @When("user enters credentials")
+    public void user_enters_credentials(Map<String,String> credential) throws InterruptedException {
+//        for(Map.Entry<String, String> entry : credential.entrySet()) {
+//            String key = entry.getKey();
+//            System.out.println("key = " + key);
+//
+//            String value = entry.getValue();
+//            System.out.println("value = " + value);
+//            System.out.println("================================");
+//        }
+
+        loginPage.login(credential.get("username"), credential.get("password"));
     }
 }
