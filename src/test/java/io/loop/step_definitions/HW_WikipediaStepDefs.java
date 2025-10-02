@@ -4,6 +4,7 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import io.loop.pages.HW_WikipediaPage;
+import io.loop.utilities.DocuportConstants;
 import io.loop.utilities.Driver;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -28,7 +29,7 @@ public class HW_WikipediaStepDefs {
     }
     @Then("User sees {string} is in the wiki title")
     public void user_sees_is_in_the_wiki_title(String expected) {
-        WebDriverWait wait = new WebDriverWait(Driver.getDriver(), Duration.ofSeconds(10));
+        WebDriverWait wait = new WebDriverWait(Driver.getDriver(), Duration.ofSeconds(DocuportConstants.LARGE));
         wait.until(ExpectedConditions.titleContains(expected));
         assertEquals("Actual does not match expected", expected, Driver.getDriver().getTitle());
     }

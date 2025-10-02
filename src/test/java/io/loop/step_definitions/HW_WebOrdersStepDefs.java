@@ -5,6 +5,7 @@ import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import io.loop.pages.HW_WebOrderLoginPages;
 import io.loop.pages.HW_WebOrdersHomePages;
+import io.loop.utilities.DocuportConstants;
 import io.loop.utilities.Driver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -24,7 +25,7 @@ public class HW_WebOrdersStepDefs {
     }
     @When("user logs in with username {string} and password {string}")
     public void user_logs_in_with_username_and_password(String username, String password) {
-        WebDriverWait wait = new WebDriverWait(Driver.getDriver(), Duration.ofSeconds(10));
+        WebDriverWait wait = new WebDriverWait(Driver.getDriver(), Duration.ofSeconds(DocuportConstants.LARGE));
         wait.until(ExpectedConditions.elementToBeClickable(loginPage.usernameField));
         loginPage.usernameField.sendKeys(username);
         loginPage.passwordField.sendKeys(password);
